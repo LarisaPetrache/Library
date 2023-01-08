@@ -19,7 +19,7 @@ public class GenreController {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<Genre> createGenre(@RequestBody Genre genre){
+    public ResponseEntity<Genre> saveGenre(@RequestBody Genre genre){
         return ResponseEntity.ok()
                 .body(genreService.saveGenre(genre));
     }

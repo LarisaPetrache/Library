@@ -1,6 +1,10 @@
 package com.example.library.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "members")
@@ -17,6 +21,11 @@ public class Member {
     private String address;
     private String membershipStartDate;
     private String membershipEndDate;
+
+    @ManyToMany
+    @JoinTable(name = "borrows", joinColumns = @JoinColumn(name = "member_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id"))
+    private List<Book> books = new ArrayList<>();
 
     public Member(){}
 
@@ -78,5 +87,13 @@ public class Member {
 
     public void setMembershipEndDate(String membershipEndDate) {
         this.membershipEndDate = membershipEndDate;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

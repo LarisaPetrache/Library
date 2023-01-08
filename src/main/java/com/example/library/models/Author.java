@@ -1,6 +1,10 @@
 package com.example.library.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "authors")
@@ -14,6 +18,10 @@ public class Author {
     private String lastName;
     private String nationality;
     private int birthYear;
+
+    @OneToMany(mappedBy = "author")
+    @JsonIgnore
+    private List<Book> bookList = new ArrayList<>();
 
     public Author(){}
 
@@ -51,5 +59,13 @@ public class Author {
 
     public void setBirthYear(int birthYear) {
         this.birthYear = birthYear;
+    }
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
     }
 }
