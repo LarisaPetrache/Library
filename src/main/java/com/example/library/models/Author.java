@@ -25,6 +25,13 @@ public class Author {
 
     public Author(){}
 
+    public Author(String firstName, String lastName, String nationality, int birthYear) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nationality = nationality;
+        this.birthYear = birthYear;
+    }
+
     public int getAuthorId() {
         return authorId;
     }
@@ -67,5 +74,11 @@ public class Author {
 
     public void setBookList(List<Book> bookList) {
         this.bookList = bookList;
+    }
+
+    @Override
+    public String toString() {
+        return "Author: " + lastName + " " + firstName +
+                " " + nationality + " " + birthYear;
     }
 }
