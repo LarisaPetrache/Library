@@ -53,6 +53,9 @@ public class BorrowController {
     }
 
     @Operation(summary = "Get all borrow records for a specified member")
+    /* ==========================
+        Get all borrow records
+     ============================ */
     @GetMapping("/records")
     public ResponseEntity<?> retrieveBorrowRecords(@RequestParam int memberId){
         List<Borrow> borrowRecords = borrowService.findAllBorrowRecordsForMember(memberId);
