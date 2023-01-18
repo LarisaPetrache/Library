@@ -22,6 +22,10 @@ public class Genre {
 
     public Genre(){}
 
+    public Genre(String name) {
+        this.name = name;
+    }
+
     public int getGenreId() {
         return genreId;
     }

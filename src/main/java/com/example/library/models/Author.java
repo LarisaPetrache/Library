@@ -13,7 +13,6 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int authorId;
-
     private String firstName;
     private String lastName;
     private String nationality;

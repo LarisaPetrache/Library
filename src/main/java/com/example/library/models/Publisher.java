@@ -23,6 +23,11 @@ public class Publisher {
 
     public Publisher(){}
 
+    public Publisher(String name, String phoneNumber) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+    }
+
     public int getPublisherId() {
         return publisherId;
     }

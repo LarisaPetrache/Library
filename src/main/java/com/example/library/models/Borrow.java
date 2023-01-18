@@ -26,6 +26,12 @@ public class Borrow {
 
     public Borrow(){}
 
+    public Borrow(Date borrowDate, Date dueDate, Date returnDate) {
+        this.borrowDate = borrowDate;
+        this.dueDate = dueDate;
+        this.returnDate = returnDate;
+    }
+
     public int getBorrowId() {
         return borrowId;
     }

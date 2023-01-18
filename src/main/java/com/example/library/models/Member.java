@@ -29,6 +29,17 @@ public class Member {
 
     public Member(){}
 
+    public Member(String firstName, String lastName, String phoneNumber, String email,
+                  String address, String membershipStartDate, String membershipEndDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+        this.membershipStartDate = membershipStartDate;
+        this.membershipEndDate = membershipEndDate;
+    }
+
     public int getMemberId() {
         return memberId;
     }

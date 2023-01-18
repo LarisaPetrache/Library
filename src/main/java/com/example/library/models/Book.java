@@ -36,6 +36,12 @@ public class Book {
 
     public Book(){}
 
+    public Book(String title, String isbn, int publicationYear) {
+        this.title = title;
+        this.isbn = isbn;
+        this.publicationYear = publicationYear;
+    }
+
     public int getBookId() {
         return bookId;
     }
