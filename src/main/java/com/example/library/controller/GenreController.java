@@ -60,7 +60,7 @@ public class GenreController {
         return ResponseEntity.ok().body(genreService.findAllGenres());
     }
 
-    @Operation(summary = "Get genre by id")
+    @Operation(summary = "Get genre by ID")
     /* ====================
         Get genre by ID
     ======================= */
