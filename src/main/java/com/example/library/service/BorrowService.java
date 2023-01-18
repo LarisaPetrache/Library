@@ -8,6 +8,8 @@ import com.example.library.repository.BorrowRepository;
 import com.example.library.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BorrowService {
 
@@ -34,4 +36,7 @@ public class BorrowService {
         return borrowRepository.save(borrow);
     }
 
+    public List<Borrow> findAllBorrowRecordsForMember(int memberId) {
+        return borrowRepository.findAllByMember_MemberId(memberId);
+    }
 }

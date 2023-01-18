@@ -4,6 +4,7 @@ import com.example.library.models.Author;
 import com.example.library.repository.AuthorRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,5 +22,9 @@ public class AuthorService {
 
     public Optional<Author> findAuthorById(int id) {
         return authorRepository.findById(id);
+    }
+
+    public List<Author> findAllAuthors() {
+        return authorRepository.findAll();
     }
 }

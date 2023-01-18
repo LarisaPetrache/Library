@@ -10,6 +10,9 @@ import com.example.library.repository.GenreRepository;
 import com.example.library.repository.PublisherRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class BookService {
 
@@ -40,5 +43,17 @@ public class BookService {
         book.setGenre(genre);
 
         return bookRepository.save(book);
+    }
+
+    public Optional<Book> findBookById(int id) {
+        return bookRepository.findById(id);
+    }
+
+    public List<Book> findAllBooks() {
+        return bookRepository.findAll();
+    }
+
+    public List<Book> searchBook(String title){
+        return bookRepository.findBookByTitleContainingIgnoreCase(title);
     }
 }
