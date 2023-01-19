@@ -20,9 +20,7 @@ public class MemberRequest {
     @NotBlank
     private String address;
     @NotBlank
-    @Past
     private String membershipStartDate;
-    @NotBlank
     private String membershipEndDate;
 
     public MemberRequest(){}

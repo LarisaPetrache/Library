@@ -65,7 +65,7 @@ public class GenreController {
         Get genre by ID
     ======================= */
     @GetMapping("/{id}")
-    public ResponseEntity<?> getAuthorById(@PathVariable int id) {
+    public ResponseEntity<?> getGenreById(@PathVariable int id) {
         Genre genre = genreService.findGenreById(id);
 
         if (genre == null) {
@@ -97,7 +97,7 @@ public class GenreController {
             Search genre
      ====================== */
     @GetMapping("/search")
-    public ResponseEntity<?> searchBook(@RequestBody String name){
+    public ResponseEntity<?> searchGenre(@RequestBody String name){
         List<Genre> genresList = genreService.searchGenre(name);
 
         if (genresList.isEmpty()) {

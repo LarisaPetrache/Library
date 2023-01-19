@@ -107,4 +107,19 @@ public class Member {
     public void setBooks(List<Book> books) {
         this.books = books;
     }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "memberId=" + memberId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", membershipStartDate='" + membershipStartDate + '\'' +
+                ", membershipEndDate='" + membershipEndDate + '\'' +
+                ", books=" + books +
+                '}';
+    }
 }

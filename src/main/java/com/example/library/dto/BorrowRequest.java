@@ -1,13 +1,11 @@
 package com.example.library.dto;
 
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
 
 import java.util.Date;
 
 public class BorrowRequest {
 
-    @Past
     @NotNull
     private Date borrowDate;
     @NotNull
