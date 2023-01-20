@@ -62,9 +62,9 @@ public class AuthorController {
     ======================= */
     @GetMapping("/{id}")
     public ResponseEntity<?> getAuthorById(@PathVariable int id) {
-        Optional<Author> author = authorService.findAuthorById(id);
+        Author author = authorService.findAuthorById(id);
 
-        if (author.isEmpty()) {
+        if (author == null) {
             return ResponseEntity.notFound().build();
         }
 

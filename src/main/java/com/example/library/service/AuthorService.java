@@ -20,8 +20,8 @@ public class AuthorService {
         return authorRepository.save(author);
     }
 
-    public Optional<Author> findAuthorById(int id) {
-        return authorRepository.findById(id);
+    public Author findAuthorById(int id) {
+        return authorRepository.findByAuthorId(id);
     }
 
     public List<Author> findAllAuthors() {

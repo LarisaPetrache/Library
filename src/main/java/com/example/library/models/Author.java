@@ -31,6 +31,14 @@ public class Author {
         this.birthYear = birthYear;
     }
 
+    public Author(int authorId, String firstName, String lastName, String nationality, int birthYear) {
+        this.authorId = authorId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nationality = nationality;
+        this.birthYear = birthYear;
+    }
+
     public int getAuthorId() {
         return authorId;
     }
