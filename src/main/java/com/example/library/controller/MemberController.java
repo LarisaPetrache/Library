@@ -1,6 +1,7 @@
 package com.example.library.controller;
 
 import com.example.library.dto.MemberRequest;
+import com.example.library.exception.MemberEmailAlreadyExistException;
 import com.example.library.mapper.MemberMapper;
 import com.example.library.models.Genre;
 import com.example.library.models.Member;
@@ -44,7 +45,11 @@ public class MemberController {
           Save member
     ===================== */
     @PostMapping
-    public ResponseEntity<Member> saveMember(@RequestBody @Valid MemberRequest memberRequest){
+    public ResponseEntity<Member> saveMember(@RequestBody @Valid MemberRequest memberRequest)
+            throws MemberEmailAlreadyExistException {
+
+        if(memberService.findByEmail(memberRequest.getEmail()) != null)
+            throw new MemberEmailAlreadyExistException();
 
         Member member = memberService.saveMember(memberMapper.memberRequestToMember(memberRequest));
 

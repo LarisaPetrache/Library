@@ -1,5 +1,6 @@
 package com.example.library.service;
 
+import com.example.library.exception.GenreAlreadyExistException;
 import com.example.library.models.Genre;
 import com.example.library.repository.GenreRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -18,7 +19,7 @@ public class GenreService {
         this.genreRepository = genreRepository;
     }
 
-    public Genre saveGenre(Genre genre){
+    public Genre saveGenre(Genre genre) {
         return genreRepository.save(genre);
     }
 
@@ -38,5 +39,9 @@ public class GenreService {
 
     public List<Genre> searchGenre(String name) {
         return genreRepository.findGenreByNameContainingIgnoreCase(name);
+    }
+
+    public Genre findByName(String name) {
+        return genreRepository.findByName(name);
     }
 }

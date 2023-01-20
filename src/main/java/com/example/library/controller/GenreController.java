@@ -1,6 +1,7 @@
 package com.example.library.controller;
 
 import com.example.library.dto.GenreRequest;
+import com.example.library.exception.GenreAlreadyExistException;
 import com.example.library.mapper.GenreMapper;
 import com.example.library.models.Genre;
 import com.example.library.service.GenreService;
@@ -43,7 +44,11 @@ public class GenreController {
           Save genre
     ======================= */
     @PostMapping
-    public ResponseEntity<Genre> saveGenre(@RequestBody @Valid GenreRequest genreRequest){
+    public ResponseEntity<Genre> saveGenre(@RequestBody @Valid GenreRequest genreRequest)
+            throws GenreAlreadyExistException{
+
+        if(genreService.findByName(genreRequest.getName()) != null)
+            throw new GenreAlreadyExistException();
 
         Genre genre = genreService.saveGenre(genreMapper.genreRequestToGenre(genreRequest));
 

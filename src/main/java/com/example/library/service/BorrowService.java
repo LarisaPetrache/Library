@@ -24,6 +24,8 @@ public class BorrowService {
     }
 
     public Borrow saveBorrow(Borrow borrow, int bookId, int memberId){
+
+        // Throw exception if book and member IDs are not valid
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new RuntimeException("Book id is not valid"));
 

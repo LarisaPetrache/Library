@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -45,11 +46,11 @@ public class BorrowController {
     @PostMapping
     public ResponseEntity<Borrow> saveBorrow(@RequestBody @Valid BorrowRequest borrowRequest,
                                             @RequestParam int bookId,
-                                            @RequestParam int memberId){
-        Borrow borrow = borrowMapper.borrowRequestToBorrow(borrowRequest);
+                                            @RequestParam int memberId) {
+        Borrow borrow = (borrowService.saveBorrow(borrowMapper.borrowRequestToBorrow(borrowRequest), bookId, memberId));
 
-        return ResponseEntity.ok()
-                .body(borrowService.saveBorrow(borrow, bookId, memberId));
+        return ResponseEntity.created(URI.create("/borrow/" + borrow.getBorrowId()))
+                .body(borrow);
     }
 
     @Operation(summary = "Get all borrow records for a specified member")

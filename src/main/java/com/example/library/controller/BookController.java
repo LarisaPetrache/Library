@@ -1,6 +1,7 @@
 package com.example.library.controller;
 
 import com.example.library.dto.BookRequest;
+import com.example.library.exception.BookAlreadyExistException;
 import com.example.library.mapper.BookMapper;
 import com.example.library.models.Book;
 import com.example.library.service.BookService;
@@ -14,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,11 +50,18 @@ public class BookController {
     public ResponseEntity<Book> saveBook(@RequestBody @Valid BookRequest bookRequest,
                                          @RequestParam int authorId,
                                          @RequestParam int publisherId,
-                                         @RequestParam int genreId){
-        Book book = bookMapper.bookRequestToBook(bookRequest);
+                                         @RequestParam int genreId)
+            throws BookAlreadyExistException {
 
-        return ResponseEntity.ok()
-                .body(bookService.saveBook(book, authorId, publisherId, genreId));
+        if(bookService.findByIsbn(bookRequest.getIsbn()) != null){
+            throw new BookAlreadyExistException();
+        }
+
+        Book book = bookService.saveBook(bookMapper.bookRequestToBook(bookRequest),
+                authorId, publisherId, genreId);
+
+        return ResponseEntity.created(URI.create("/book/" + book.getBookId()))
+                .body(book);
     }
 
     @Operation(summary = "Get book based on ID")

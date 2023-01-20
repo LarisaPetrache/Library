@@ -1,5 +1,6 @@
 package com.example.library.service;
 
+import com.example.library.exception.BookAlreadyExistException;
 import com.example.library.models.Author;
 import com.example.library.models.Book;
 import com.example.library.models.Genre;
@@ -21,14 +22,17 @@ public class BookService {
     private final PublisherRepository publisherRepository;
     private final GenreRepository genreRepository;
 
-    public BookService(BookRepository bookRepository, AuthorRepository authorRepository, PublisherRepository publisherRepository, GenreRepository genreRepository) {
+    public BookService(BookRepository bookRepository, AuthorRepository authorRepository,
+                       PublisherRepository publisherRepository, GenreRepository genreRepository) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
         this.publisherRepository = publisherRepository;
         this.genreRepository = genreRepository;
     }
 
-    public Book saveBook(Book book, int authorId, int publisherId, int genreId){
+    public Book saveBook(Book book, int authorId, int publisherId, int genreId) throws BookAlreadyExistException {
+
+        // Throw exception if author, publisher and genre IDs are not valid
         Author author = authorRepository.findById(authorId)
                 .orElseThrow(() -> new RuntimeException("Author id is not valid"));
 
@@ -55,5 +59,9 @@ public class BookService {
 
     public List<Book> searchBook(String title){
         return bookRepository.findBookByTitleContainingIgnoreCase(title);
+    }
+
+    public Book findByIsbn(String isbn){
+        return bookRepository.findByIsbn(isbn);
     }
 }

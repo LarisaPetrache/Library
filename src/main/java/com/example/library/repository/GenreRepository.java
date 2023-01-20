@@ -11,4 +11,6 @@ public interface GenreRepository extends JpaRepository<Genre, Integer> {
     Genre findByGenreId(Integer id);
 
     List<Genre> findGenreByNameContainingIgnoreCase(String name);
+
+    Genre findByName(String name);
 }
