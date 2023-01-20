@@ -4,7 +4,6 @@ import com.example.library.dto.GenreRequest;
 import com.example.library.exception.GenreAlreadyExistException;
 import com.example.library.mapper.GenreMapper;
 import com.example.library.models.Genre;
-import com.example.library.repository.GenreRepository;
 import com.example.library.service.GenreService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -133,25 +132,4 @@ public class GenreControllerTest {
         verify(genreService, times(1)).searchGenre(name);
     }
 
-//    @Test
-//    public void genreIdExist_updateGenreTest(){
-//        String oldName = "previous genre name";
-//        String newName = "new genre name";
-//        int id = 1;
-//
-//        // Get genre from database based on ID
-//        Genre genre = new Genre(id, oldName);
-//        when(genreService.findGenreById(id)).thenReturn(genre);
-//
-//        // Updated genre
-//        Genre savedGenre = new Genre();
-//        savedGenre.setName(newName);
-//        savedGenre.setGenreId(id);
-//
-//        when(genreService.updateGenre(genre)).thenReturn(savedGenre);
-//
-//        assertNotNull(savedGenre);
-//        assertEquals(id, savedGenre.getGenreId());
-//        assertEquals(newName, savedGenre.getName());
-//    }
 }
