@@ -36,6 +36,10 @@ public class Borrow {
         return borrowId;
     }
 
+    public void setBorrowId(int borrowId) {
+        this.borrowId = borrowId;
+    }
+
     public Date getBorrowDate() {
         return borrowDate;
     }

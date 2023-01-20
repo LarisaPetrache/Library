@@ -17,6 +17,7 @@ public class Member {
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    @Column(unique = true)
     private String email;
     private String address;
     private String membershipStartDate;
@@ -42,6 +43,10 @@ public class Member {
 
     public int getMemberId() {
         return memberId;
+    }
+
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
     }
 
     public String getFirstName() {

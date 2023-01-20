@@ -13,7 +13,7 @@ public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int publisherId;
-
+    @Column(unique = true)
     private String name;
     private String phoneNumber;
 
@@ -30,6 +30,10 @@ public class Publisher {
 
     public int getPublisherId() {
         return publisherId;
+    }
+
+    public void setPublisherId(int publisherId) {
+        this.publisherId = publisherId;
     }
 
     public String getName() {

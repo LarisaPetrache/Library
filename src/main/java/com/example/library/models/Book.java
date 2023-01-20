@@ -13,8 +13,8 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bookId;
-
     private String title;
+    @Column(unique = true)
     private String isbn;
     private int publicationYear;
 
@@ -44,6 +44,10 @@ public class Book {
 
     public int getBookId() {
         return bookId;
+    }
+
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
     public String getTitle() {
