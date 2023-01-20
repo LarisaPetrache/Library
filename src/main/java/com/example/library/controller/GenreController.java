@@ -88,12 +88,16 @@ public class GenreController {
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateGenre(@RequestBody String newName, @PathVariable Integer id){
 
+        if(genreService.findGenreById(id) == null)
+            return ResponseEntity.badRequest().body("Provided ID doesn't exist");
+
         Genre genre = genreService.findGenreById(id);
 
         genre.setName(newName);
-        genreService.updateGenre(genre);
 
-        return ResponseEntity.ok().body("Genre name updated!");
+        Genre updatedGenre = genreService.updateGenre(genre);
+
+        return ResponseEntity.ok().body("Genre name updated with the new name: " + updatedGenre.getName());
     }
 
     @Operation(summary = "Search genre",
@@ -105,7 +109,7 @@ public class GenreController {
     public ResponseEntity<?> searchGenre(@RequestBody String name){
         List<Genre> genresList = genreService.searchGenre(name);
 
-        if (genresList.isEmpty()) {
+        if (genresList == null) {
             return ResponseEntity.notFound().build();
         }
 

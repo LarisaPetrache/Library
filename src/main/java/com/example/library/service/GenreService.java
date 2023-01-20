@@ -33,8 +33,8 @@ public class GenreService {
 
     @Transactional
     @Modifying
-    public void updateGenre(Genre genre) {
-        genreRepository.save(genre);
+    public Genre updateGenre(Genre genre) {
+        return genreRepository.save(genre);
     }
 
     public List<Genre> searchGenre(String name) {
