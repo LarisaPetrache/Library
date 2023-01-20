@@ -28,6 +28,12 @@ public class Publisher {
         this.phoneNumber = phoneNumber;
     }
 
+    public Publisher(int publisherId, String name, String phoneNumber) {
+        this.publisherId = publisherId;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+    }
+
     public int getPublisherId() {
         return publisherId;
     }
